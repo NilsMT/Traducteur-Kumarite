@@ -1,0 +1,66 @@
+/* DARK */
+:root.theme_dark {
+    --bg: #353535;
+    --bg-dark: #292929;
+    --bg-light: #656565;
+
+    --text: #ffffff;
+    --opptext: #000000;
+}
+
+:root.theme_dark .btn:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+:root.theme_dark .btn-normal {
+    background-color: var(--bg-light);
+}
+
+/* LIGHT */
+:root.theme_light {
+    --bg: #b0b0b0;
+    --bg-dark: #5c5c5c;
+    --bg-light: #dddddd;
+
+    --text: #000000;
+    --opptext: #ffffff;
+}
+
+:root.theme_light .btn:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+:root.theme_light .btn-normal {
+    background-color: var(--bg-light);
+}
+
+:root.theme_light textarea {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* ANCIENT */
+:root.theme_ancient {
+    --bg: #4a361f;
+    --bg-dark: #2f2213;
+    --bg-light: #725431;
+
+    --text: #ddbe6c;
+    --opptext: #232323;
+}
+
+:root.theme_ancient .btn:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+:root.theme_ancient .btn-normal {
+    background-color: var(--bg-light);
+}
+
+:root.theme_ancient textarea {
+    background-color: #ffffff;
+    color: #000000;
+}

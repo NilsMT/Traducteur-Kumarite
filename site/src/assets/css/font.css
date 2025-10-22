@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "GenshinAhhFont";
+    src: url("../font/zhcn.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "KumariteFont";
+    src: url("../font/kumarite.otf") format("opentype");
+}
