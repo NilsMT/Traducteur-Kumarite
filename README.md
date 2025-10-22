@@ -1,3 +1,3 @@
-Envoie ce lien a ton/ta crush pour lui déclarer ta flamme ❤️
-
-> ⚠️ : Je ne garanti pas que ça fonctionne (le contraire serais étonnant)
+-   Le texte étant à l'origine de ce site : [Texte.docx](./docs/Texte.docx)
+-   Le monolithe : [Monolithe.docx](./docs/Monolithe.docx)
+-   Le livre "Vérité" : [Vérité.docx](./docs/Vérité.docx)
