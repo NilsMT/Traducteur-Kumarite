@@ -43,6 +43,7 @@ body {
         .material-symbols-outlined
     ) {
     font-family: "KumariteFont", monospace;
+    font-weight: bold;
 }
 
 /* Links */

@@ -1,32 +1,38 @@
 <template>
     <h1>Traducteur</h1>
     <h1 class="kuma">Traducteur</h1>
+
     <div id="main" class="translator">
         <div class="textzone">
+            <div class="com">Français</div>
             <textarea
+                id="fr"
                 v-model="txt"
                 :readonly="arrowDirection === 'left'"
                 :style="{ height: textHeight + 'px' }"
-                @input="syncHeight($event)"
+                @input="syncHeight"
             ></textarea>
-            <div class="com first-com">La zone de saisie s'adapte</div>
+            <div class="first-com">
+                La zone de saisie s'adapte<br />
+                <sub class="first-com">à peu de choses près</sub>
+            </div>
         </div>
 
         <button class="switch-btn btn btn-normal" @click="toggleDirection">
-            <div>
-                {{ arrowDirection === "right" ? "➡️" : "⬅️" }}
-            </div>
+            <div>{{ arrowDirection === "right" ? "➡️" : "⬅️" }}</div>
         </button>
 
         <div class="textzone">
+            <div class="com kuma">Kumarite</div>
             <textarea
+                id="km"
                 v-model="txt"
                 :readonly="arrowDirection === 'right'"
                 class="kuma"
                 :style="{ height: textHeight + 'px' }"
-                @input="syncHeight($event)"
+                @input="syncHeight"
             ></textarea>
-            <div class="com">à la longueur de votre texte !</div>
+            <div>à la longueur de votre texte !</div>
         </div>
     </div>
 </template>
@@ -42,23 +48,36 @@ function toggleDirection() {
     arrowDirection.value = arrowDirection.value === "right" ? "left" : "right";
 }
 
-function syncHeight(e) {
-    const el = e.target;
-    el.style.height = "auto";
-    textHeight.value = el.scrollHeight; // read actual content height
-    el.style.height = textHeight.value + "px"; // apply it
+function syncHeight() {
+    const a = document.getElementById("fr");
+    const b = document.getElementById("km");
+
+    // Reset heights for accurate measurement
+    a.style.height = "auto";
+    b.style.height = "auto";
+
+    // Get current heights
+    const aHeight = a.scrollHeight;
+    const bHeight = b.scrollHeight;
+
+    // Pick the taller one
+    const bestHeight = Math.max(aHeight, bHeight);
+
+    // Apply to both and store reactive value
+    textHeight.value = bestHeight;
+
+    a.style.height = bestHeight + "px";
+    b.style.height = bestHeight + "px";
 }
 
-// Initialize height once after mount
+// Initialize once after mount
 onMounted(() => {
     nextTick(() => {
-        const firstTextarea = document.querySelector("textarea");
-        if (firstTextarea) {
-            firstTextarea.style.height = "auto";
-            textHeight.value = firstTextarea.scrollHeight;
-            firstTextarea.style.height = textHeight.value + "px";
-        }
+        syncHeight();
     });
+
+    // Optional: resync on window resize
+    window.addEventListener("resize", syncHeight);
 });
 </script>
 
@@ -106,6 +125,18 @@ h1.kuma {
     padding: 0;
 }
 
+.com.kuma {
+    font-size: calc(var(--text-size) * 2);
+}
+
+.com:not(.kuma) {
+    line-height: calc(var(--text-size) * 2);
+}
+
+.com {
+    margin-bottom: var(--padding);
+}
+
 textarea:read-only {
     filter: brightness(0.5);
 }
@@ -117,10 +148,14 @@ textarea.kuma {
 
 textarea:not(.kuma) {
     line-height: calc(var(--text-size) * 2);
-    letter-spacing: calc(var(--text-size) * 0.4);
 }
 
 .first-com {
     text-align: right;
+    width: 100%;
+}
+
+.com {
+    text-align: center;
 }
 </style>

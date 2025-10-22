@@ -14,7 +14,7 @@ const router = createRouter({
         // This is the main page of the app
         {
             path: "/",
-            name: "Déclaration (pas d'impôts)",
+            name: "Traducteur Kumarite",
             component: MainView,
         },
 
