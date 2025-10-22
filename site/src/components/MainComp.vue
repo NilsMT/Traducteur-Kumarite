@@ -5,6 +5,7 @@
     <div id="main" class="translator">
         <div class="textzone">
             <div class="com">Français</div>
+
             <textarea
                 id="fr"
                 v-model="txt"
@@ -12,6 +13,7 @@
                 :style="{ height: textHeight + 'px' }"
                 @input="syncHeight"
             ></textarea>
+
             <div class="first-com">
                 La zone de saisie s'adapte<br />
                 <sub class="first-com">à peu de choses près</sub>
@@ -24,6 +26,7 @@
 
         <div class="textzone">
             <div class="com kuma">Kumarite</div>
+
             <textarea
                 id="km"
                 v-model="txt"
@@ -32,6 +35,7 @@
                 :style="{ height: textHeight + 'px' }"
                 @input="syncHeight"
             ></textarea>
+
             <div>à la longueur de votre texte !</div>
         </div>
     </div>
@@ -52,32 +56,28 @@ function syncHeight() {
     const a = document.getElementById("fr");
     const b = document.getElementById("km");
 
-    // Reset heights for accurate measurement
+    // reset
     a.style.height = "auto";
     b.style.height = "auto";
 
-    // Get current heights
+    // get best
     const aHeight = a.scrollHeight;
     const bHeight = b.scrollHeight;
 
-    // Pick the taller one
     const bestHeight = Math.max(aHeight, bHeight);
 
-    // Apply to both and store reactive value
+    // apply
     textHeight.value = bestHeight;
 
     a.style.height = bestHeight + "px";
     b.style.height = bestHeight + "px";
 }
 
-// Initialize once after mount
+// Init
 onMounted(() => {
     nextTick(() => {
         syncHeight();
     });
-
-    // Optional: resync on window resize
-    window.addEventListener("resize", syncHeight);
 });
 </script>
 
@@ -98,7 +98,7 @@ onMounted(() => {
 textarea {
     width: calc(100% - (var(--padding) * 2));
     min-height: calc(var(--text-size));
-    resize: vertical;
+    resize: none;
 }
 
 .textzone {
