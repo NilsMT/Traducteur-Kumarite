@@ -1,3 +1,4 @@
 -   Le texte étant à l'origine de ce site : [Texte.docx](./docs/Texte.docx)
 -   Le monolithe : [Monolithe.docx](./docs/Monolithe.docx)
 -   Le livre "Vérité" : [Vérité.docx](./docs/Vérité.docx)
+-   Le brainstorming de tout cela : [Brainstorming.docx](./docs/Brainstorming.docx)
