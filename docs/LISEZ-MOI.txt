@@ -1,0 +1,11 @@
+Ce dossier contient plusieurs fichiers :
+
+- Brainstorming.docx : Les réflexions ayant conduit à l’écriture du texte.
+
+- Texte.docx : L’histoire principale.
+
+- Monolithe.docx : Illustration du monolithe rencontré par le personnage.
+
+- Vérité.docx : Extrait du texte que le personnage lit, dans sa version originale.
+
+- Traducteur Kumarite : Un raccourci Internet vers un traducteur entre le français et la langue étrangère.
