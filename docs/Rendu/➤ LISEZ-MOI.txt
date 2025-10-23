@@ -1,0 +1,17 @@
+=================================================
+
+ℹ️ Texte.pdf est le fichier central de ce rendu
+
+=================================================
+
+Ce dossier contient plusieurs fichiers :
+
+- Brainstorming.pdf : Les réflexions ayant conduit à l’écriture du texte.
+
+- Texte.pdf : L’histoire principale.
+
+- Monolithe.pdf : Illustration du monolithe rencontré par le personnage.
+
+- Vérité.pdf : Extrait du texte que le personnage lit, dans sa version originale.
+
+- Traducteur Kumarite : Un raccourci Internet vers un traducteur entre le français et la langue étrangère.
