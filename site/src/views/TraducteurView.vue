@@ -2,7 +2,7 @@
     <div id="main_cont">
         <HeaderComp />
 
-        <MainComp class="section" />
+        <TraducteurComp class="section" />
     </div>
 </template>
 
@@ -26,5 +26,5 @@
 
 <script setup>
 import HeaderComp from "@/components/HeaderComp.vue";
-import MainComp from "@/components/MainComp.vue";
+import TraducteurComp from "@/components/TraducteurComp.vue";
 </script>

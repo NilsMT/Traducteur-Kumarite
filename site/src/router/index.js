@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Error404View from "@/views/Error404View.vue";
 import WIPView from "@/views/WIPView.vue";
-import MainView from "@/views/MainView.vue";
+import TraducteurView from "@/views/TraducteurView.vue";
+import PDFReaderView from "@/views/PDFReaderView.vue";
 
 const WIPPath = [
     // "UnfinishedView",
@@ -11,16 +12,21 @@ const WIPPath = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-        // This is the main page of the app
+        {
+            path: "/reader/:filename",
+            name: "PDFReader",
+            component: PDFReaderView,
+        },
+        // Traducteur
         {
             path: "/",
             name: "Traducteur Kumarite",
-            component: MainView,
+            component: TraducteurView,
         },
 
         // WIP
         {
-            path: "/WIP",
+            path: "/wip",
             name: "Page en construction",
             component: WIPView,
         },
