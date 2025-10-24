@@ -2,41 +2,44 @@
     <h1>Traducteur</h1>
     <h1 class="kuma">Traducteur</h1>
 
-    <div id="main" class="translator">
-        <div class="textzone">
-            <div class="com">Français</div>
-
-            <textarea
-                id="fr"
-                v-model="txt"
-                :readonly="arrowDirection === 'left'"
-                :style="{ height: textHeight + 'px' }"
-                @input="syncHeight"
-            ></textarea>
-
-            <div class="first-com">
-                La zone de saisie s'adapte<br />
-                <sub class="first-com">à peu de choses près</sub>
-            </div>
-        </div>
-
-        <button class="switch-btn btn btn-normal" @click="toggleDirection">
-            <div>{{ arrowDirection === "right" ? "➡️" : "⬅️" }}</div>
-        </button>
-
-        <div class="textzone">
+    <div class="translator">
+        <!-- Kumarite Text Zone -->
+        <div class="textzone" id="kumarite">
             <div class="com kuma">Kumarite</div>
 
             <textarea
                 id="km"
                 v-model="txt"
-                :readonly="arrowDirection === 'right'"
+                :readonly="arrowDirection === 'left'"
                 class="kuma"
                 :style="{ height: textHeight + 'px' }"
                 @input="syncHeight"
             ></textarea>
 
-            <div>à la longueur de votre texte !</div>
+            <div class="com-bot">
+                La zone de saisie s'adapte<br />
+                <sub>à peu de choses près</sub>
+            </div>
+        </div>
+
+        <!-- Switch Button -->
+        <button class="btn btn-normal switch-btn" @click="toggleDirection">
+            {{ arrowDirection === "right" ? "➡️" : "⬅️" }}
+        </button>
+
+        <!-- French Text Zone -->
+        <div class="textzone" id="french">
+            <div class="com">Français</div>
+
+            <textarea
+                id="fr"
+                v-model="txt"
+                :readonly="arrowDirection === 'right'"
+                :style="{ height: textHeight + 'px' }"
+                @input="syncHeight"
+            ></textarea>
+
+            <div class="com-bot">à la longueur de votre texte !</div>
         </div>
     </div>
 </template>
@@ -91,19 +94,25 @@ onMounted(() => {
     padding: var(--padding);
 }
 
-.translator > * {
-    border: solid 4px var(bg--dark);
-}
-
-textarea {
-    width: calc(100% - (var(--padding) * 2));
-    min-height: calc(var(--text-size));
-    resize: none;
-}
+/******************** */
 
 .textzone {
     width: 45%;
+    display: flex;
+    flex-direction: column;
 }
+
+#kumarite {
+    justify-items: left;
+    align-items: end;
+}
+
+#french {
+    justify-items: right;
+    align-items: start;
+}
+
+/******************** */
 
 .switch-btn {
     font-size: 1.5em;
@@ -112,7 +121,7 @@ textarea {
     cursor: pointer;
 
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
 
     position: sticky;
@@ -120,21 +129,37 @@ textarea {
     left: 0;
 }
 
+/******************** */
+
 h1.kuma {
     margin: 0;
     padding: 0;
 }
 
+/******************** */
+
+.com {
+    padding: var(--padding);
+    font-size: calc(var(--text-size) * 1.2);
+    text-align: center;
+}
+
 .com.kuma {
-    font-size: calc(var(--text-size) * 2);
+    font-size: calc(var(--text-size) * 2.4);
+    padding-right: 0;
 }
 
 .com:not(.kuma) {
     line-height: calc(var(--text-size) * 2);
+    padding-left: 0;
 }
 
-.com {
-    margin-bottom: var(--padding);
+/******************** */
+
+textarea {
+    width: calc(100% - (var(--padding) * 2));
+    min-height: calc(var(--text-size));
+    resize: none;
 }
 
 textarea:read-only {
@@ -150,12 +175,14 @@ textarea:not(.kuma) {
     line-height: calc(var(--text-size) * 2);
 }
 
-.first-com {
-    text-align: right;
-    width: 100%;
+/******************** */
+
+.com-bot {
+    margin-top: var(--padding);
 }
 
-.com {
-    text-align: center;
+#kumarite .com-bot {
+    text-align: right;
+    width: 100%;
 }
 </style>
