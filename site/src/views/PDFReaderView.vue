@@ -2,8 +2,7 @@
     <div id="container">
         <header>
             <router-link class="btn btn-normal" to="/">
-                Retour à l'accueil
-                <span class="material-symbols-outlined"> home </span>
+                Traducteur
             </router-link>
 
             <router-link
