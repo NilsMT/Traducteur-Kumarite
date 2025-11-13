@@ -6,9 +6,10 @@
             </router-link>
 
             <router-link
-                v-for="doc in navDocs"
+                v-for="doc in docs"
                 :key="doc.filename"
                 class="btn btn-normal"
+                :disabled="doc.filename == currentFilename"
                 :to="`/reader/${doc.filename}`"
             >
                 {{ doc.label }}
@@ -66,11 +67,10 @@ const docs = [
     { filename: "Brainstorming", label: "Brainstorming" },
 ];
 
-const navDocs = computed(() => {
-    // if route param undefined, return all docs
-    if (!route.params?.filename) return docs;
-    return docs.filter((doc) => doc.filename !== route.params.filename);
+const currentFilename = computed(() => {
+    return route.params.filename;
 });
+
 const pdfUrl = computed(() =>
     route.params.filename ? `/pdf/${route.params.filename}.pdf` : ""
 );

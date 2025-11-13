@@ -1,8 +1,6 @@
 <template>
     <header>
         <!-- Thème -->
-        <ThemeButtonComp id="theme" />
-
         <!-- Home link if withHome is true -->
         <router-link
             v-if="withHome"
@@ -11,18 +9,45 @@
         >
             home
         </router-link>
+
+        <router-link
+            v-for="doc in navDocs"
+            :key="doc.filename"
+            class="btn btn-normal"
+            :to="`/reader/${doc.filename}`"
+        >
+            {{ doc.label }}
+        </router-link>
+
+        <ThemeButtonComp id="theme" />
     </header>
 </template>
 
 <script setup>
 import ThemeButtonComp from "./ThemeButtonComp.vue";
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
+import { useRoute, RouterLink } from "vue-router";
+
+const route = useRoute();
 
 const props = defineProps({
     withHome: {
         type: Boolean,
         default: false,
     },
+});
+
+const docs = [
+    { filename: "Texte", label: "Texte" },
+    { filename: "Monolithe", label: "Monolithe" },
+    { filename: "Vérité", label: "Vérité" },
+    { filename: "Brainstorming", label: "Brainstorming" },
+];
+
+const navDocs = computed(() => {
+    // if route param undefined, return all docs
+    if (!route.params?.filename) return docs;
+    return docs.filter((doc) => doc.filename !== route.params.filename);
 });
 </script>
 

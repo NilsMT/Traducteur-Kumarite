@@ -8,9 +8,14 @@
     --opptext: #000000;
 }
 
-:root.theme_dark .btn:hover {
+:root.theme_dark .btn:hover,
+:root.theme_dark .btn[disabled="true"] {
     filter: brightness(0.9);
     cursor: pointer;
+}
+
+:root.theme_dark .btn[disabled="true"] {
+    border: 2px var(--text) solid;
 }
 
 :root.theme_dark .btn-normal {
@@ -27,9 +32,14 @@
     --opptext: #ffffff;
 }
 
-:root.theme_light .btn:hover {
+:root.theme_light .btn:hover,
+:root.theme_light .btn[disabled="true"] {
     filter: brightness(0.9);
     cursor: pointer;
+}
+
+:root.theme_light .btn[disabled="true"] {
+    border: 2px var(--text) solid;
 }
 
 :root.theme_light .btn-normal {
@@ -51,9 +61,14 @@
     --opptext: #232323;
 }
 
-:root.theme_ancient .btn:hover {
+:root.theme_ancient .btn:hover,
+:root.theme_ancient .btn[disabled="true"] {
     filter: brightness(0.9);
     cursor: pointer;
+}
+
+:root.theme_ancient .btn[disabled="true"] {
+    border: 2px var(--text) solid;
 }
 
 :root.theme_ancient .btn-normal {
